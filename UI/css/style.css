@@ -39,10 +39,24 @@ ul{
     margin-top: 20px;
     margin-left: 20px;
 }
+.button_4{
+    height: 38px;
+    width: 130px;
+    background: #00a388;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #ffffff;
+ 
+}
 .form_1{
     padding: 15px;
     margin-top: 15px;
     width: 40%;
+}
+.form_2{
+    padding: 15px;
+    width: 60%;
 }
 .form_1 input{
     margin-top: 10px;
@@ -53,6 +67,12 @@ ul{
 }
 .form_1 label{
     margin-bottom: 10px;
+}
+.form_2 textarea{
+    width: 50%;
+}
+.links{
+    color: #ff6138;
 }
 /*header styles */
 header{
@@ -103,6 +123,32 @@ header a:hover{
      width:55%;
     
 }
+ul#user-action li{
+    list-style: none;
+    display: inline;
+    margin-left: 20px;
+    
+
+}
+ul#user-action li a{
+    color: #00a388;
+} 
+#user-action img{
+    width: 30px;
+    height:30px;
+    margin-bottom: -2px;
+
+}
+#comments{
+    width: 80%;
+    float: left;
+}
+#meetup{
+    font-size: 25px;
+    border:#00a388 1px solid;
+    border-radius: 25px;
+    padding: 10px;
+}
 /* footer styles */
  footer{
      padding:20px;
@@ -112,7 +158,7 @@ header a:hover{
      font-size: 20px;
      text-align: center;
      
- }
+}
 
 
 

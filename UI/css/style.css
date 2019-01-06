@@ -75,6 +75,10 @@ ul{
     color: #ff6138;
     margin-top:10px;
 }
+.link_n{
+    color: #000000;
+    margin-top:10px;
+}
 /*header styles */
 header{
     background: #00a388;;
@@ -117,7 +121,11 @@ header a:hover{
 }
 #content form{
      float: left;
- }
+}
+#content a{
+     text-decoration: none;
+     
+}
 #display {
      margin-top: 20px;
      float: left;

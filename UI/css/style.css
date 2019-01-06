@@ -126,6 +126,11 @@ header a:hover{
      text-decoration: none;
      
 }
+#content li{
+    list-style-type: circle;
+    margin-top: 20px;
+    margin-left: 20px;
+ }
 #display {
      margin-top: 20px;
      float: left;
@@ -157,6 +162,11 @@ ul#user-action li a{
     border:#00a388 1px solid;
     border-radius: 25px;
     padding: 10px;
+}
+.paging{
+    padding: 5px;
+    color: #ff6138;
+    border: #000000 1px solid;
 }
 /* footer styles */
  footer{

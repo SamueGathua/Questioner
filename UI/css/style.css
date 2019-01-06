@@ -39,6 +39,12 @@ ul{
     margin-top: 20px;
     margin-left: 20px;
 }
+.button_3{
+    background: #ff6138;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-left: 20px;
+}
 .button_4{
     height: 38px;
     width: 130px;
@@ -48,6 +54,39 @@ ul{
     padding-right: 20px;
     color: #ffffff;
  
+}
+.button_5{
+    height: 60px;
+    width: 200px;
+    background: #ff6138;
+    border: solid;
+    color: #ffffff;
+    border-radius: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    
+ 
+}
+.button_5_1{
+    height: 60px;
+    width: 200px;
+    background: #00a388;
+    border: solid;
+    color: #ffffff;
+    border-radius: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    
+}
+.button_6{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    background: #00a388;
+    border: 0;
 }
 .form_1{
     padding: 15px;

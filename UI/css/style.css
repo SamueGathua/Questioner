@@ -217,6 +217,35 @@ ul#user-action li a{
      text-align: center;
      
 }
+/* media queries  styling*/
+ @media(max-width: 768px){
+     header #logo,
+     header nav,
+     header nav li,
+    #container
+    #content form,
+    #subcontent
+     footer
+     
+     {
+
+         float: none;
+         text-align: center;
+         width: 100%;
+     }
+     header{
+         padding-bottom: 20px;
+     }
+     .button_1,.button_2 , .button_3,.button_4, .button_5_1,.button_5, .button_6{
+         display: block;
+         width: 100%;
+     }
+    .form_1, form_2, .form_1 input, .form_2 input, .form_1 textarea, .form_2 textarea{
+         width: 100%;
+         margin-bottom: 5px;
+  }  
+ 
+  
 
 
 

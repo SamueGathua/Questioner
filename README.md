@@ -1,1 +1,4 @@
 # Questioner
+
+### Author
+Samuel Gathua

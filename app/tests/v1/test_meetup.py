@@ -26,3 +26,7 @@ class TesstMeetupEndpoints(unittest.TestCase):
      def test_post(self):
          r = self.create_record()
          self.assertEqual(r.status_code, 201)
+     def test_get(self):
+         self.create_record()
+         r = self.client.get("/api/v1/meetups", headers={"content-type": "application/json"})
+         self.assertEqual(r.status_code, 200)

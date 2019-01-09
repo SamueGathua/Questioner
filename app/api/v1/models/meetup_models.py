@@ -18,3 +18,6 @@ class MeetupRecords():
         }
         meetup_record.append(data)
         return meetup_record
+
+    def get_records(self):
+        return meetup_record

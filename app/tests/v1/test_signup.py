@@ -15,9 +15,12 @@ class TestSignupEndpoints(unittest.TestCase):
         "uname": "Sam",
         "email": "Sam@abc.com",
         "password": "password"
-
         }
-        response = self.client.post('/api/v1/meetups',
+        response = self.client.post('/api/v1/signup',
                             data=json.dumps(new_rec),
                             headers={"content-type": "application/json"})
         return response
+
+     def test_signup_post(self):
+            r = self.create_record()
+            self.assertEqual(r.status_code, 201)

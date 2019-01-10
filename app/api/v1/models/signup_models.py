@@ -3,7 +3,7 @@ import datetime
 signup_record = []
 
 class SignupRecords():
-    def __init__(self):
+    def __init__(sel):
         self.rec = signup_record
 
     def save(self, uname, email, password):

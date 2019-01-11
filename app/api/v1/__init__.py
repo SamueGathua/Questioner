@@ -4,9 +4,8 @@ from flask import Blueprint
 version_one = Blueprint('api_v1', __name__, url_prefix='/api/v1')
 api = Api(version_one)
 
-from .views.meetup_views import Meetup, MeetupId
+from .views.meetup_views import Meetup, MeetupId, ConfirmAttendance
 from .views.question_views import Question
-from .views.confirm_views import ConfirmAttendance
 from .views.voting_views import Voting
 from .views.signup_views import Signup
 

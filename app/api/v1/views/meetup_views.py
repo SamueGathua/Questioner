@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import jsonify, make_response, request
 
-from ..models.meetup_models import MeetupRecords
+from ..models.meetup_models import MeetupRecords, ConfirmRecords
 
 class Meetup(Resource, MeetupRecords):
     def __init__(self):
@@ -31,3 +31,14 @@ class MeetupId(Resource, MeetupRecords):
             return make_response(jsonify({"My new records are": rec}), 200)
         else:
             return make_response(jsonify({"Msg": "Meetup record not found"}), 404)
+
+class ConfirmAttendance(ConfirmRecords, Resource):
+    def __init__(self):
+        self.records = ConfirmRecords()
+
+    def post(self, id):
+        data = request.get_json()
+        meetup_id = id
+        confirm = data['confirm']
+        responce = self.records.save(meetup_id, confirm)
+        return make_response(jsonify({"A new confirm Attendance record has been created with the following details": responce}), 201)

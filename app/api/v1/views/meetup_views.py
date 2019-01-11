@@ -36,9 +36,9 @@ class ConfirmAttendance(ConfirmRecords, Resource):
     def __init__(self):
         self.records = ConfirmRecords()
 
-    def post(self, id):
+    def post(self, m_id):
         data = request.get_json()
-        meetup_id = id
+        meetup_id = m_id
         confirm = data['confirm']
         responce = self.records.save(meetup_id, confirm)
         return make_response(jsonify({"A new confirm Attendance record has been created with the following details": responce}), 201)

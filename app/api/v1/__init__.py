@@ -5,8 +5,7 @@ version_one = Blueprint('api_v1', __name__, url_prefix='/api/v1')
 api = Api(version_one)
 
 from .views.meetup_views import Meetup, MeetupId, ConfirmAttendance
-from .views.question_views import Question
-from .views.voting_views import Voting
+from .views.question_views import Question, Voting
 from .views.signup_views import Signup
 
 api.add_resource(Meetup, '/meetups')

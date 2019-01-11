@@ -21,3 +21,22 @@ class TestQuestions(unittest.TestCase):
     def test_question_post(self):
         r = self.create_record()
         self.assertEqual(r.status_code, 201)
+
+
+class TestVoting(unittest.TestCase):
+    def setUp(self):
+         app.testing = True
+         self.app = create_app()
+         self.client = self.app.test_client()
+    def create_record(self):
+        new_rec = {
+        "vote": "up"
+        }
+        response = self.client.post('/api/v1/meetups/questions/4/votes',
+                            data=json.dumps(new_rec),
+                            headers={"content-type": "application/json"})
+        return response
+
+    def test_voting_post(self):
+        r = self.create_record()
+        self.assertEqual(r.status_code, 201)

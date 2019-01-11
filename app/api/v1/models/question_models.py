@@ -2,9 +2,10 @@ import datetime
 question_record = []
 voting_record =[]
 
-class QuestionRecord():
+class Records():
     def __init__(self):
         self.rec  = question_record
+        self.rec = voting_record
 
     def save(self, meetup_id, question):
         data = {
@@ -16,10 +17,6 @@ class QuestionRecord():
         question_record.append(data)
         return question_record
 
-
-class VotingRecord():
-    def __init__(self):
-        self.rec  = voting_record
 
     def save(self, question_id, vote):
         data = {

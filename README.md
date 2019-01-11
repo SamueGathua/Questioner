@@ -2,9 +2,11 @@
 [![Build Status](https://travis-ci.org/SamueGathua/Questioner.svg?branch=develop)](https://travis-ci.org/SamueGathua/Questioner)
 [![Coverage Status](https://coveralls.io/repos/github/SamueGathua/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/SamueGathua/Questioner?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/03cd5ce808b7bd12e7c7/maintainability)](https://codeclimate.com/github/SamueGathua/Questioner/maintainability)
+
+## About the project
 This is a platform meant to cloud source and prioritize questions to be answered during a specific meetup or forum.The subscribed user can login to the platform view the upcoming meetup ,post questions to the upcoming meetups ,comment on question posted by other user or upvote/downvote a question posted by other users.
 
-##Key principles observed during the development ofthis project:
+## Key principles observed during the development ofthis project:
 
     a) Pivotal tracker [here](https://www.pivotaltracker.com/n/projects/2235674)
     b) Workflow -Version control

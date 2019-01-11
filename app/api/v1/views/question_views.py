@@ -20,9 +20,9 @@ class Voting(VotingRecord, Resource):
     def __init__(self):
         self.records = VotingRecord()
 
-    def post(self, id):
+    def post(self, q_id):
         data = request.get_json()
-        question_id = id
+        question_id = q_id
         vote = data['vote']
         responce = self.records.save(question_id, vote)
         return make_response(jsonify({"A new vote record has been created with the following details": responce}), 201)

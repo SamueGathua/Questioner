@@ -36,7 +36,7 @@ class ConfirmAttendance(ConfirmRecords, Resource):
     def __init__(self):
         self.records = ConfirmRecords()
 
-    def post(self, id):
+    def post_confirm(self, id):
         data = request.get_json()
         meetup_id = id
         confirm = data['confirm']

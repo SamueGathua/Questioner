@@ -1,12 +1,12 @@
 from flask_restful import Resource
 from flask import jsonify, make_response, request
 
-from ..models.question_models import QuestionRecord, VotingRecord
+from ..models.question_models import Records
 
 
-class Question(QuestionRecord, Resource):
+class Question(Records, Resource):
     def __init__(self):
-        self.records = QuestionRecord()
+        self.records = Records()
 
     def post(self, id):
         data = request.get_json()
@@ -16,9 +16,9 @@ class Question(QuestionRecord, Resource):
         return make_response(jsonify({"A new question record has been created with the following details": responce}), 201)
 
 
-class Voting(VotingRecord, Resource):
+class Voting(Records, Resource):
     def __init__(self):
-        self.records = VotingRecord()
+        self.records = Records()
 
     def post(self, q_id):
         data = request.get_json()

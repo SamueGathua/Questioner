@@ -1,6 +1,7 @@
 import datetime
 
 meetup_record = []
+confirm_record = []
 
 class MeetupRecords():
     def __init__(self):
@@ -18,13 +19,27 @@ class MeetupRecords():
         }
         meetup_record.append(data)
         return meetup_record
-
     def get_records(self):
-        return meetup_record
+             return meetup_record
 
     def find(self, id):
-        result = False
-        for meetup in meetup_record:
-            if meetup['id'] == id:
-                return meetup
-        return result
+             result = False
+             for meetup in meetup_record:
+                if meetup['id'] == id:
+                    return meetup
+                return result
+
+
+class ConfirmRecords():
+        def __init__(self):
+            self.rec  = confirm_record
+
+        def save(self, meetup_id, confirm):
+            data = {
+            "confirm_id": len(confirm_record) + 1,
+            "meetup_id": meetup_id,
+            "posted-on": datetime.datetime.now(),
+            "confirm_models": confirm
+            }
+            confirm_record.append(data)
+            return confirm_record

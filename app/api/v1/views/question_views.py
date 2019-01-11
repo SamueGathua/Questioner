@@ -8,7 +8,7 @@ class Question(QuestionRecord, Resource):
     def __init__(self):
         self.records = QuestionRecord()
 
-    def post(self, id):
+    def post_question(self, id):
         data = request.get_json()
         meetup_id = id
         question = data['question']
@@ -20,7 +20,7 @@ class Voting(VotingRecord, Resource):
     def __init__(self):
         self.records = VotingRecord()
 
-    def post(self, id):
+    def post_voting(self, id):
         data = request.get_json()
         question_id = id
         vote = data['vote']

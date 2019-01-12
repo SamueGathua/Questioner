@@ -11,10 +11,9 @@ class Meetup(Resource, MeetupRecords):
          data = request.get_json()
          title = data['title']
          description = data['description']
-         host = data['host']
          venue = data['venue']
          date = data['date']
-         res = self.records.save(title, description, host, venue, date)
+         res = self.records.save(title, description,venue, date)
          return make_response(jsonify({"A new record with the following data has been added": res}), 201)
 
     def get(self):

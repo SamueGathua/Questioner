@@ -7,13 +7,12 @@ class MeetupRecords():
     def __init__(self):
         self.rec = meetup_record
 
-    def save(self, title, description, host, venue, date):
+    def save(self, title, description,venue, date):
         data = {
         "id": len(meetup_record) + 1,
         "postedOn":datetime.datetime.now(),
         "title": title,
         "description": description,
-        "host": host,
         "venue": venue,
         "date" : date
         }

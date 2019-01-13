@@ -8,7 +8,7 @@ This is a platform meant to cloud source and prioritize questions to be answered
 
 ## Key principles observed during the development ofthis project:
 
-    a) Pivotal tracker [here](https://www.pivotaltracker.com/n/projects/2235674)
+    a) Pivotal tracker [here](https://www.pivotaltracker.com/n/projects/2235471)
     b) Workflow -Version control
     c) Test Driven Development(TDD).
     d) Object Oriented Programming.

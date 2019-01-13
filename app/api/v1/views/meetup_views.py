@@ -35,6 +35,12 @@ class ConfirmAttendance(ConfirmRecords, Resource):
     def __init__(self):
         self.records = ConfirmRecords()
 
+    def get(self, m_id):
+        rec = self.records.get_confirms(m_id)
+        if rec:
+            return make_response(jsonify({"The selected question has the following votes": rec}), 200)
+
+
     def post(self, m_id):
         data = request.get_json()
         meetup_id = m_id

@@ -33,6 +33,9 @@ class ConfirmRecords():
         def __init__(self):
             self.rec  = confirm_record
 
+        def get_confirms(self, m_id):
+            return confirm_record
+
         def save(self, meetup_id, confirm):
             data = {
             "confirm_id": len(confirm_record) + 1,

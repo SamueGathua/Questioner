@@ -30,6 +30,8 @@ class TesstMeetupEndpoints(unittest.TestCase):
          self.create_record()
          r = self.client.get("/api/v1/meetups", headers={"content-type": "application/json"})
          self.assertEqual(r.status_code, 200)
+         r = self.client.get("/api/v1/meetups/1", headers={"content-type": "application/json"})
+         self.assertEqual(r.status_code, 200)
 class TestConfirm(unittest.TestCase):
     def setUp(self):
          app.testing = True
@@ -39,7 +41,7 @@ class TestConfirm(unittest.TestCase):
         new_rec = {
         "confirm": "Yes?"
         }
-        response = self.client.post('/api/v1/meetups/4/confirms',
+        response = self.client.post('/api/v1/meetups/1/confirms',
                             data=json.dumps(new_rec),
                             headers={"content-type": "application/json"})
         return response
@@ -47,3 +49,8 @@ class TestConfirm(unittest.TestCase):
     def test_confirm_post(self):
         r = self.create_record()
         self.assertEqual(r.status_code, 201)
+    def test_confirm_get(self):
+         self.create_record()
+         r = self.client.get("/api/v1/meetups/1/confirms", headers={"content-type": "application/json"})
+         self.assertEqual(r.status_code, 200)
+        

@@ -28,15 +28,13 @@ class TestVoting(unittest.TestCase):
          app.testing = True
          self.app = create_app()
          self.client = self.app.test_client()
-    def create_record(self):
-        new_rec = {
-        "vote": "up"
-        }
-        response = self.client.post('/api/v1/meetups/questions/4/votes',
-                            data=json.dumps(new_rec),
-                            headers={"content-type": "application/json"})
-        return response
 
-    def test_voting_post(self):
-        r = self.create_record()
-        self.assertEqual(r.status_code, 201)
+    def test_upvote_patch(self):
+        response = self.client.patch('/api/v1/questions/1/upvotes',
+            headers={"content-type": "application/json"})
+        self.assertEqual(response.status_code, 201)
+
+    def test_downvote_patch(self):
+        response = self.client.patch('/api/v1/questions/1/downvotes',
+            headers={"content-type": "application/json"})
+        self.assertEqual(response.status_code, 201)

@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import jsonify, make_response, request
 
-from ..models.question_models import QuestionRecords, VotingRecords
+from ..models.question_models import QuestionRecords, VotingRecord
 from ....utils.validators import Validations
 
 
@@ -25,15 +25,21 @@ class Question(QuestionRecords, Resource):
              return make_response(jsonify({"status":400,
                                         "Error":"Unrecognised key"}), 400)
 
-
-class Voting(VotingRecords, Resource):
+class Upvotes(VotingRecord, Resource):
     def __init__(self):
-        self.records = VotingRecords()
+        self.rec = VotingRecord()
 
-    def post(self, q_id):
-        data = request.get_json()
-        question_id = q_id
-        vote = data['vote']
-        responce = self.records.save(question_id, vote)
+    def patch(self, id):
+        response = self.rec.vote(id, True)
         return make_response(jsonify({"status":201,
-                                    "A new vote record has been created with the following details": responce}), 201)
+                                    "The voting record has been updated with the following details": response}), 201)
+
+
+class Downvotes(VotingRecord, Resource):
+    def __init__(self):
+        self.rec = VotingRecord()
+
+    def patch(self, id):
+        response = self.rec.vote(id, False)
+        return make_response(jsonify({"status":201,
+                                    "The voting record has been updated with the following details": response}), 201)

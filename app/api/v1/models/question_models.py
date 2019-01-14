@@ -2,7 +2,7 @@ import datetime
 question_record = []
 voting_record =[]
 
-class Records():
+class QuestionRecords():
     def __init__(self):
         self.rec  = question_record
         self.rec = voting_record
@@ -17,7 +17,7 @@ class Records():
         question_record.append(data)
         return question_record
 
-
+class VotingRecords():
     def save(self, question_id, vote):
         data = {
         "vote_id": len(voting_record) + 1,

@@ -11,14 +11,7 @@ class Validations():
             data = False
         return data
 
-    def validate_question_keys(self, data):
 
-        try:
-            question = data['question']
-
-        except KeyError:
-            data = False
-        return data
 
     def validate_confirm_attendance_keys(self, data):
 

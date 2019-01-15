@@ -14,7 +14,6 @@ class TesstMeetupEndpoints(unittest.TestCase):
         new_rec = {
         "title": "Hackers hub",
         "description": "A meeting for hackers",
-        "host": "Dr Hangir",
         "venue": "Mombasa",
         "date": "27th of December"
         }
@@ -26,12 +25,15 @@ class TesstMeetupEndpoints(unittest.TestCase):
      def test_post(self):
          r = self.create_record()
          self.assertEqual(r.status_code, 201)
+
      def test_get(self):
          self.create_record()
          r = self.client.get("/api/v1/meetups", headers={"content-type": "application/json"})
          self.assertEqual(r.status_code, 200)
          r = self.client.get("/api/v1/meetups/1", headers={"content-type": "application/json"})
          self.assertEqual(r.status_code, 200)
+
+
 class TestConfirm(unittest.TestCase):
     def setUp(self):
          app.testing = True
@@ -53,4 +55,3 @@ class TestConfirm(unittest.TestCase):
          self.create_record()
          r = self.client.get("/api/v1/meetups/1/confirms", headers={"content-type": "application/json"})
          self.assertEqual(r.status_code, 200)
-        

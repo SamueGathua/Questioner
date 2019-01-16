@@ -6,10 +6,11 @@ api = Api(version_one)
 
 from .views.meetup_views import Meetup, MeetupId, ConfirmAttendance
 from .views.question_views import Question, Upvotes, Downvotes
-from .views.signup_views import Signup
+from .views.user_views import Signup, AuthenticateUser
 
 api.add_resource(Meetup, '/meetups')
-api.add_resource(Signup, '/signup')
+api.add_resource(Signup, '/user/signup')
+api.add_resource(AuthenticateUser, '/user/login')
 api.add_resource(MeetupId, '/meetups/<int:id>')
 api.add_resource(Question, '/meetups/<int:id>/questions')
 api.add_resource(ConfirmAttendance, '/meetups/<int:m_id>/confirms')

@@ -12,11 +12,12 @@ class TestSignupEndpoints(unittest.TestCase):
 
      def create_record(self):
         new_rec = {
-        "uname": "Sam",
+        "fname": "Sam",
+        "lname": "Gat",
         "email": "Sam@abc.com",
         "password": "password"
         }
-        response = self.client.post('/api/v1/signup',
+        response = self.client.post('/api/v1/user/signup',
                             data=json.dumps(new_rec),
                             headers={"content-type": "application/json"})
         return response
@@ -24,3 +25,13 @@ class TestSignupEndpoints(unittest.TestCase):
      def test_signup_post(self):
             r = self.create_record()
             self.assertEqual(r.status_code, 201)
+
+     def test_user_authentication_post(self):
+        self.create_record()
+        response = self.client.post('/api/v1/user/login', \
+            data=json.dumps({
+                "email" : "Sam@abc.com",
+                "password" : "password",
+                }),\
+            headers={"content-type": "application/json"})
+        self.assertEqual(response.status_code, 200)

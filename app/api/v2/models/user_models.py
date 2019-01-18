@@ -1,10 +1,10 @@
 import datetime
-
+from ....utils.dbconnect import init_db
 signup_record = []
 
 class UserRecords():
     def __init__(self):
-        self.rec = signup_record
+        self.db = init_db()
 
     def save(self, fname,lname, email, password):
         data = {
@@ -16,8 +16,15 @@ class UserRecords():
         "password" :password
 
         }
-        signup_record.append(data)
-        return signup_record
+        query = """INSERT INTO users(FirstName, LastName, Email, Password)
+        VALUES ('%s', '%s', '%s', '%s');""" % \
+        (data['fname'], data['lname'], data['email'], data['password'])
+
+        save = self.db
+        cur = save.cursor()
+        cur.execute(query)
+        save.commit()
+        return data
 
     def login_user(self, email, password):
 

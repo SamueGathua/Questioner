@@ -1,6 +1,6 @@
 import os
 import psycopg2
-from tables import Tables
+from .tables import Tables
 DB_URL = os.getenv('DATABASE_URL')
 
 def init_db():

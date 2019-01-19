@@ -1,5 +1,5 @@
 from flask import Flask, Blueprint
-from utils.dbconnect import create_tables
+from .utils.dbconnect import create_tables
 
 from .api.v1 import version_one as v1
 from .api.v2 import version_two as v2

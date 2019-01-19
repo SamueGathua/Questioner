@@ -4,7 +4,7 @@ from .tables import Tables
 DB_URL = os.getenv('DATABASE_URL')
 
 def init_db():
-    con = psycopg2.connect(DB_URL)
+    con = psycopg2.connect("dbname=questionerdb host=localhost port=5432 user=postgres password='root'")
     return con
 
 def create_tables():

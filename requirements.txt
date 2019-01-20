@@ -1,6 +1,7 @@
 aniso8601==4.1.0
 atomicwrites==1.2.1
 attrs==18.2.0
+binary==1.0.0
 Click==7.0
 coverage==4.5.2
 Flask==1.0.2
@@ -10,9 +11,12 @@ gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
+marshmallow==3.0.0rc4.dev0
 more-itertools==5.0.0
 pathlib2==2.3.3
 pluggy==0.8.0
+psycopg2==2.7.6.1
+psycopg2-binary==2.7.6.1
 py==1.7.0
 pytest==4.1.0
 pytest-cov==2.6.1

@@ -14,16 +14,16 @@ class Signup(Resource, UserRecords):
          email = data['email']
          password = data['password']
          res = self.records.save(fname,lname, email, password)
-         return make_response(jsonify({"A new record with the following data has been added": res}), 201)
+         return make_response(jsonify({"A new record with the following data has been succesfully added to the database": res}), 201)
 
 class AuthenticateUser(UserRecords, Resource):
-    """ class to login a user """
+
     def __init__(self):
         self.rec = UserRecords()
 
 
     def post(self):
-        """ post request endpoint for user login """
+
         data = request.get_json()
         email = data['email']
         password = data['password']

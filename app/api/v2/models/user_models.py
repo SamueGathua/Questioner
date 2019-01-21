@@ -1,37 +1,27 @@
 import datetime
+from ....utils.dbconnect import init_db
 
-signup_record = []
 
 class UserRecords():
     def __init__(self):
-        self.rec = signup_record
+        self.db = init_db()
 
     def save(self, fname,lname, email, password):
+        registered_on= datetime.datetime.now()
         data = {
-        "id": len(signup_record) + 1,
-        "RegisteredOn":datetime.datetime.now(),
+        "registered_on":registered_on,
         "fname": fname,
         "lname": lname,
         "email": email,
         "password" :password
 
         }
-        signup_record.append(data)
-        return signup_record
+        query = """INSERT INTO users(FirstName, LastName, Email, Password,RegisteredOn)
+        VALUES ('%s', '%s', '%s', '%s','%s');""" % \
+        (data['fname'], data['lname'], data['email'], data['password'], data['registered_on'])
 
-    def login_user(self, email, password):
-
-        user = None
-        authentication = False
-        for record in self.rec:
-            #checks whether the email provided does exist in the users records
-            if record['email'] == email:
-                user = record
-                break
-        if user is not None:
-            #Checks that the password provided matches the one in the users records
-            if user['password'] == password:
-                authentication = 'Success'
-            else:
-                authentication = 'Fail'
-        return authentication
+        save = self.db
+        cur = save.cursor()
+        cur.execute(query)
+        save.commit()
+        return data

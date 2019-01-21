@@ -4,7 +4,7 @@ from flask.testing import FlaskClient
 import unittest
 import json
 
-class TestSignupEndpoints(unittest.TestCase):
+class TestSignupDatabase(unittest.TestCase):
      def setUp(self):
          app.testing = True
          self.app = create_app()
@@ -25,13 +25,3 @@ class TestSignupEndpoints(unittest.TestCase):
      def test_signup_post(self):
             r = self.create_record()
             self.assertEqual(r.status_code, 201)
-
-     def test_user_authentication_post(self):
-        self.create_record()
-        response = self.client.post('/api/v2/user/login', \
-            data=json.dumps({
-                "email" : "Sam@abc.com",
-                "password" : "password",
-                }),\
-            headers={"content-type": "application/json"})
-        self.assertEqual(response.status_code, 200)

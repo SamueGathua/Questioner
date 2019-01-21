@@ -25,7 +25,31 @@ This is a platform meant to cloud source and prioritize questions to be answered
 3. Create a virtual environment 'virtualenv myenv'.
 4. Activate the environment 'source myenv/bin/activate'.
 5. Install the required  project packages 'pip install -r requirements.txt'.
-6. Enter 'Flask run' to test the API.
+6. Setup the database environment variables
+7. Enter 'Flask run' to test the API.
+
+### API Endpoints(v1)
+| **HTTP METHOD**  | **URI**                                    |  **DESCRIPTION**           |
+| -----------      | -----------                                |  ---------------           |
+| **POST**         | /api/v1/user/signup                        |  Create a new user.        |  
+| **POST**         | /api/v1/user/login                         |  Login a user.             |
+| **POST**         | /api/v1/meetups                            |  Create a new meetup.      |
+| **GET**          | /api/v1/meetups                            |  Get all the meetups.      |
+| **GET**          | /api/v1/meetups/<int:id>                   |  Get a specific meetup.    |
+| **PUT**          | /api/v1/meetups/<int:id>                   |  Update a meetup record.   |
+| **POST**         | /api/v1/meetups/<int:id>/confirms          |  Confirms attendance.     |
+| **POST**         | /api/v1/meetups/<int:id>/questions         |  Create a question record. |
+| **PATCH**        | /api/v1/questions/<int:id>/upvotes         |  Upvote a qustion.         |
+| **PATCH**        | /api/v1//questions/<int:id>/downvotes      |  Downvote a question.      |
+
+### API Endpoints(v2)
+| **HTTP METHOD**  | **URI**                                    |  **DESCRIPTION**           |
+| -----------      | -----------                                |  ---------------           |
+| **POST**         | /api/v2/user/signup                        |  Creates a new user.        |  
+
+
+### Running Tests
+Enter 'coverage run --source=app -m pytest && coverage report' command to run tests.
 
 ### Author
 

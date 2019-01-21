@@ -31,21 +31,21 @@ This is a platform meant to cloud source and prioritize questions to be answered
 ### API Endpoints(v1)
 | **HTTP METHOD**  | **URI**                                    |  **DESCRIPTION**           |
 | -----------      | -----------                                |  ---------------           |
-| **POST**         | /api/v1/auth/signup                        |  Create a new user.        |  
-| **POST**         | /api/v1/auth/login                         |  Login a user.             |
+| **POST**         | /api/v1/user/signup                        |  Create a new user.        |  
+| **POST**         | /api/v1/user/login                         |  Login a user.             |
 | **POST**         | /api/v1/meetups                            |  Create a new meetup.      |
 | **GET**          | /api/v1/meetups                            |  Get all the meetups.      |
 | **GET**          | /api/v1/meetups/<int:id>                   |  Get a specific meetup.    |
 | **PUT**          | /api/v1/meetups/<int:id>                   |  Update a meetup record.   |
-| **POST**         | /api/v1/meetups/<int:id>/confirms             |  Reserve for a meetup.     |
+| **POST**         | /api/v1/meetups/<int:id>/confirms          |  Confirms attendance.     |
 | **POST**         | /api/v1/meetups/<int:id>/questions         |  Create a question record. |
-| **PATCH**        | /api/v1/questions/<int:id>/upvotes          |  Upvote a qustion.         |
-| **PATCH**        | /api/v1//questions/<int:id>/downvotes       |  Downvote a question.      |
+| **PATCH**        | /api/v1/questions/<int:id>/upvotes         |  Upvote a qustion.         |
+| **PATCH**        | /api/v1//questions/<int:id>/downvotes      |  Downvote a question.      |
 
 ### API Endpoints(v2)
 | **HTTP METHOD**  | **URI**                                    |  **DESCRIPTION**           |
 | -----------      | -----------                                |  ---------------           |
-| **POST**         | /api/v2/auth/signup                        |  Create a new user.        |  
+| **POST**         | /api/v2/user/signup                        |  Creates a new user.        |  
 
 
 ### Running Tests

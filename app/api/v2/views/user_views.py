@@ -51,3 +51,24 @@ class Signup(Resource, UserRecords):
              res = self.records.save(data)
              return make_response(jsonify({"message":"A new record with the following data has been succesfully added to the database",
                                        "data": res}), 201)
+
+
+class AuthenticateUser(UserRecords, Resource):
+    """ class to login a user """
+    def __init__(self):
+        self.rec = UserRecords()
+
+
+    def post(self):
+        """ post request endpoint for user login """
+        data = request.get_json()
+        email = data['email']
+        password = data['password']
+        user_data = self.rec.login_user(email)
+
+        if user_data:
+            if user_data[5].strip() == password:
+                return make_response(jsonify({"message":"Login succesful"}), 200)
+            else:
+                return make_response(jsonify({"message":"Incorrect password"}), 400)
+        return make_response(jsonify({"message":"User does not exist"}), 404)

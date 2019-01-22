@@ -11,8 +11,8 @@ class Signup(Resource, UserRecords):
 
         #validates the key and data types  for the meetup record
 
-        self.parser.add_argument('fname', type=str, required=True, help='Invalid key for fname')
-        self.parser.add_argument('lname', type=str, required=True, help='Invalid key for lname')
+        self.parser.add_argument('firstname', type=str, required=True, help='Invalid key for fname')
+        self.parser.add_argument('lastname', type=str, required=True, help='Invalid key for lname')
         self.parser.add_argument('othername', type=str, required=True, help='Invalid key for othername')
         self.parser.add_argument('email', type=str, required=True, help='Invalid key for email')
         self.parser.add_argument('phonenumber', type=str, required=True, help='Invalid key for phonenumber')
@@ -22,12 +22,12 @@ class Signup(Resource, UserRecords):
 
     def post(self):
          data = self.parser.parse_args(strict=True)
-         if not data['fname'] or not data['fname'].strip():
+         if not data['firstname'] or not data['firstname'].strip():
              return make_response(jsonify({"status":400,
-                                        "Error":" The fname field is required"}), 400)
-         if not data['lname'] or  not data['lname'].strip():
+                                        "Error":" The firstname field is required"}), 400)
+         if not data['lastname'] or  not data['firstname'].strip():
              return make_response(jsonify({"status":400,
-                                        "Error":"The lname field is required"}), 400)
+                                        "Error":"The lastname field is required"}), 400)
          if not data['othername'] or not data['othername'].strip() :
              return make_response(jsonify({"status":400,
                                         "Error":"The othername field is required"}), 400)
@@ -43,7 +43,7 @@ class Signup(Resource, UserRecords):
          if not self.validate.validate_email(data['email']):
              return make_response(jsonify({"status":400,
                                         "Error":"Invalid email format"}), 400)
-         if self.validate.validate_password(data['password']):
+         if not self.validate.validate_password(data['password']):
              return make_response(jsonify({"status":400,
                                         "Error":"Password should have atleast 1 character,,1 uppercase,and a number"}), 400)
 

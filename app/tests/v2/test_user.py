@@ -12,8 +12,8 @@ class TestSignupDatabase(unittest.TestCase):
 
      def create_record(self):
         new_rec = {
-            "fname":"Sam",
-	        "lname":"Akote",
+            "firstname":"Sam",
+	        "lastname":"Akote",
 	        "othername":"sothee",
 	        "phonenumber":"0707089765",
 	        "email":"sam@example.com",

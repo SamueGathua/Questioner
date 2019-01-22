@@ -12,10 +12,13 @@ class TestSignupDatabase(unittest.TestCase):
 
      def create_record(self):
         new_rec = {
-        "fname": "Sam",
-        "lname": "Gat",
-        "email": "Sam@abc.com",
-        "password": "password"
+            "fname":"Sam",
+	        "lname":"Akote",
+	        "othername":"sothee",
+	        "phonenumber":"0707089765",
+	        "email":"sam@example.com",
+	        "password":"SamAkot12&",
+	        "isadmin": ""
         }
         response = self.client.post('/api/v2/user/signup',
                             data=json.dumps(new_rec),

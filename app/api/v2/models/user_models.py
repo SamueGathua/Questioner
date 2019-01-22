@@ -9,8 +9,8 @@ class UserRecords():
         registered_on= datetime.datetime.now()
         data = {
         "registered_on":registered_on,
-        "fname": data['fname'],
-        "lname": data['lname'],
+        "firstname": data['firstname'],
+        "lastname": data['lastname'],
         "othername": data['othername'],
         "email": data['email'],
         "phonenumber":data['phonenumber'],
@@ -21,7 +21,7 @@ class UserRecords():
         query = """INSERT INTO users(FirstName, LastName, OtherName,\
         Email,Password,RegisteredOn,IsAdmin,PhoneNumber)
         VALUES ('%s', '%s', '%s', '%s','%s','%s','%s','%s');""" % \
-        (data['fname'], data['lname'], data['othername'], data['email'],\
+        (data['firstname'], data['lastname'], data['othername'], data['email'],\
         data['password'], data['registered_on'],data['isadmin'],data['phonenumber'])
 
         save = self.db

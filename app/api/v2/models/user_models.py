@@ -7,6 +7,7 @@ class UserRecords():
         self.db = init_db()
 
     def save(self, data):
+
         registered_on= datetime.datetime.now()
         data = {
         "registered_on":registered_on,

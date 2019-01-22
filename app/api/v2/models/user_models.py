@@ -29,3 +29,12 @@ class UserRecords():
         cur.execute(query)
         save.commit()
         return data
+        
+    def login_user(self, email):
+
+        query = "SELECT * FROM users WHERE email = '{}'".format(email)
+        get_user_data = init_db()
+        cursor = get_user_data.cursor()
+        cursor.execute(query)
+        user_data = cursor.fetchone()
+        return user_data

@@ -18,7 +18,7 @@ class TestSignupDatabase(unittest.TestCase):
 	        "phonenumber":"0707089765",
 	        "email":"sam@example.com",
 	        "password":"SamAkot12&",
-	        "isadmin": ""
+	        "isadmin":"True"
         }
         response = self.client.post('/api/v2/user/signup',
                             data=json.dumps(new_rec),
@@ -26,5 +26,5 @@ class TestSignupDatabase(unittest.TestCase):
         return response
 
      def test_signup_post(self):
-            r = self.create_record()
-            self.assertEqual(r.status_code, 201)
+            resp = self.create_record()
+            self.assertEqual(resp.status_code, 201)

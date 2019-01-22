@@ -1,4 +1,5 @@
 import datetime
+from werkzeug.security import generate_password_hash
 from ....utils.dbconnect import init_db
 
 class UserRecords():
@@ -14,7 +15,7 @@ class UserRecords():
         "othername": data['othername'],
         "email": data['email'],
         "phonenumber":data['phonenumber'],
-        "password": data['password'],
+        "password":generate_password_hash( data['password'],method='pbkdf2:sha256', salt_length=8),
         "isadmin": data['isadmin']
 
         }
@@ -29,3 +30,15 @@ class UserRecords():
         cur.execute(query)
         save.commit()
         return data
+
+    def login_user(self, email):
+        user_data = None,
+        query = "SELECT password, email FROM users WHERE email = '{}'".format(email)
+        get_user_data = init_db()
+        cursor = get_user_data.cursor()
+        cursor.execute(query)
+        user_data = cursor.fetchone()
+        if user_data == None:
+            return False
+
+        return user_data

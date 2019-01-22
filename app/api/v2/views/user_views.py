@@ -1,5 +1,6 @@
 from flask_restful import Resource,reqparse
 from flask import jsonify, make_response, request
+from werkzeug.security import check_password_hash
 from ..models.user_models import UserRecords
 from ....utils.validators import Validations
 
@@ -11,8 +12,8 @@ class Signup(Resource, UserRecords):
 
         #validates the key and data types  for the meetup record
 
-        self.parser.add_argument('firstname', type=str, required=True, help='Invalid key for fname')
-        self.parser.add_argument('lastname', type=str, required=True, help='Invalid key for lname')
+        self.parser.add_argument('firstname', type=str, required=True, help='Invalid key for firstname')
+        self.parser.add_argument('lastname', type=str, required=True, help='Invalid key for flask_restfulname')
         self.parser.add_argument('othername', type=str, required=True, help='Invalid key for othername')
         self.parser.add_argument('email', type=str, required=True, help='Invalid key for email')
         self.parser.add_argument('phonenumber', type=str, required=True, help='Invalid key for phonenumber')
@@ -45,9 +46,46 @@ class Signup(Resource, UserRecords):
                                         "Error":"Invalid email format"}), 400)
          if not self.validate.validate_password(data['password']):
              return make_response(jsonify({"status":400,
-                                        "Error":"Password should have atleast 1 character,,1 uppercase,and a number"}), 400)
+                                        "Error":"Password should have atleast 1 character,1 uppercase,and\
+                                         a number"}), 400)
 
          else:
              res = self.records.save(data)
-             return make_response(jsonify({"message":"A new record with the following data has been succesfully added to the database",
+             return make_response(jsonify({"message":"A new record with the following data has been succesfully \
+                                        added to the database",
                                        "data": res}), 201)
+
+
+class AuthenticateUser(UserRecords, Resource):
+    """ class to login a user """
+    def __init__(self):
+        self.rec = UserRecords()
+        self.parser = reqparse.RequestParser()
+        self.parser.add_argument('email', type=str, required=True, help='Invalid key for Email')
+        self.parser.add_argument('password', type=str, required=True, help='Invalid key for Password')
+
+    def post(self):
+        """ post request endpoint for user login """
+        data= self.parser.parse_args(strict=True)
+
+        if not data['email'].strip():
+            return make_response(jsonify({"status":400,
+                                       "Error":"Email field is required"}), 400)
+        if not data['password'].strip():
+            return make_response(jsonify({"status":400,
+                                       "Error":"Password field is required"}), 400)
+
+            pass
+
+        user_data = self.rec.login_user(data['email'])
+
+
+        if user_data:
+            password,email = user_data
+            if check_password_hash(password.strip(), data['password']):
+
+                return make_response(jsonify({"message":"Login succesful"}), 200)
+            else:
+                return make_response(jsonify({"message":"Incorrect password"}), 400)
+
+        return make_response(jsonify({"message":"User does not exist"}), 404)

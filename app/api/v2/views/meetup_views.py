@@ -56,3 +56,18 @@ class Meetup(Resource, MeetupRecords):
             return make_response(jsonify({"status":201,
                                          "message":"A new record with the following data has been added",
                                          "data": res}), 201)
+
+                                         
+class MeetupId(Resource, MeetupRecords):
+    def __init__(self):
+        self.records = MeetupRecords()
+
+    def get(self, id):
+        if self.records.get_specific_meetup_record(id):
+            rec =self.records.get_specific_meetup_record(id)
+            return make_response(jsonify({"status":200,
+                                        "The requested meetup record has the following details": rec}), 200)
+        else:
+            """if the requested data does not exist"""
+            return make_response(jsonify({"status":200,
+                                        "Error": "Meetup record not found"}), 404)

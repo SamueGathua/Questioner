@@ -13,11 +13,11 @@ class Meetup(Resource, MeetupRecords):
         self.check_admin = User()
         #validates the key and data types  for the meetup record
 
-        self.parser.add_argument('title', type=str, required=True, help='Invalid key')
-        self.parser.add_argument('description', type=str, required=True, help='Invalid key')
-        self.parser.add_argument('venue', type=str, required=True, help='Invalid key')
-        self.parser.add_argument('date', type=str, required=True, help='Invalid key')
-        self.parser.add_argument('tags', type=str, required=True, help='Invalid key')
+        self.parser.add_argument('title', type=str, required=True, help='Invalid key for title')
+        self.parser.add_argument('description', type=str, required=True, help='Invalid key for description')
+        self.parser.add_argument('venue', type=str, required=True, help='Invalid key for venue')
+        self.parser.add_argument('date', type=str, required=True, help='Invalid key for date')
+        self.parser.add_argument('tags', type=str, required=True, help='Invalid key in tags')
 
 
     @jwt_required

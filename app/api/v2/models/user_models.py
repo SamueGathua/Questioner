@@ -1,5 +1,6 @@
 import datetime
 from werkzeug.security import generate_password_hash
+
 from ....utils.dbconnect import init_db
 
 class UserRecords():

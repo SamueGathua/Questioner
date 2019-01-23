@@ -55,7 +55,7 @@ class Signup(Resource, UserRecords):
 
          else:
              access_token = create_access_token(identity=data['email'])
-             res = self.save(data)
+             res = self.records.save(data)
              return make_response(jsonify({
                                         "message": "Records for {} {} has beed added \
                                         to the database".format( data['firstname'],data['lastname']),

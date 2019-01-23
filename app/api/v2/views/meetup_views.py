@@ -31,19 +31,19 @@ class Meetup(Resource, MeetupRecords):
                                        "message":" This service is for admin only"}), 401)
         if not reqdata['title'] or not reqdata['title'].strip():
             return make_response(jsonify({"status":400,
-                                       "Error":" The title field is required"}), 400)
+                                       "error":" The title field is required"}), 400)
         if not reqdata['description'] or  not reqdata['description'].strip():
             return make_response(jsonify({"status":400,
-                                       "Error":"The description field is required"}), 400)
+                                       "error":"The description field is required"}), 400)
         if not reqdata['venue'] or not reqdata['venue'].strip() :
             return make_response(jsonify({"status":400,
-                                       "Error":"The venue field is required"}), 400)
+                                       "error":"The venue field is required"}), 400)
         if not reqdata['date']:
             return make_response(jsonify({"status":400,
-                                       "Error":"The date field is required"}), 400)
+                                       "error":"The date field is required"}), 400)
         if not reqdata['tags']:
             return make_response(jsonify({"status":400,
-                                       "Error":"The Tags field is required"}), 400)
+                                       "error":"The Tags field is required"}), 400)
 
         else:
             """Executed when all the above validations pass"""

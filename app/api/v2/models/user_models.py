@@ -8,9 +8,9 @@ class UserRecords():
 
     def save(self, data):
 
-        registered_on= datetime.datetime.now()
+
         data = {
-        "registered_on":registered_on,
+        "registered_on":datetime.datetime.now(),
         "firstname": data['firstname'],
         "lastname": data['lastname'],
         "othername": data['othername'],

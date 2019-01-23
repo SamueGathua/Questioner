@@ -9,11 +9,10 @@ class MeetupRecords():
         self.get_user = User()
 
     def save(self, data,author):
-        postedOn= datetime.datetime.now()
-        author_id = self.get_user.get_user_details(author)
+        
         data = {
-        "postedOn":postedOn,
-        "user_id": author_id,
+        "postedOn":datetime.datetime.now(),
+        "user_id": self.get_user.get_user_details(author),
         "title": data['title'],
         "description": data['description'],
         "venue": data['venue'],

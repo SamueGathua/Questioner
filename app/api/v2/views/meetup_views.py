@@ -19,6 +19,9 @@ class Meetup(Resource, MeetupRecords):
         self.parser.add_argument('date', type=str, required=True, help='Invalid key for date')
         self.parser.add_argument('tags', type=str, required=True, help='Invalid key in tags')
 
+    def get(self):
+        return make_response(jsonify({"status":200,
+                                    "The available meetup records are": self.records.get_all_meetup_records()}), 200)
 
     @jwt_required
     def post(self):

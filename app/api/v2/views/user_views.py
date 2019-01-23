@@ -13,7 +13,7 @@ class Signup(Resource, UserRecords):
         self.validate = Validations()
         """validates the key and data types  for the meetup record"""
         self.parser.add_argument('firstname', type=str, required=True, help='Invalid key for firstname')
-        self.parser.add_argument('lastname', type=str, required=True, help='Invalid key for flask_restfulname')
+        self.parser.add_argument('lastname', type=str, required=True, help='Invalid key for lastname')
         self.parser.add_argument('othername', type=str, required=True, help='Invalid key for othername')
         self.parser.add_argument('email', type=str, required=True, help='Invalid key for email')
         self.parser.add_argument('phonenumber', type=str, required=True, help='Invalid key for phonenumber')
@@ -59,7 +59,7 @@ class Signup(Resource, UserRecords):
              return make_response(jsonify({
                                         "message": "Records for {} {} has beed added \
                                         to the database".format( data['firstname'],data['lastname']),
-                                        "Token":access_token}), 201)
+                                        "token":access_token}), 201)
 
 
 class AuthenticateUser(UserRecords, Resource):
@@ -67,8 +67,8 @@ class AuthenticateUser(UserRecords, Resource):
     def __init__(self):
         self.rec = UserRecords()
         self.parser = reqparse.RequestParser()
-        self.parser.add_argument('email', type=str, required=True, help='Invalid key for Email')
-        self.parser.add_argument('password', type=str, required=True, help='Invalid key for Password')
+        self.parser.add_argument('email', type=str, required=True, help='Invalid key for email')
+        self.parser.add_argument('password', type=str, required=True, help='Invalid key for password')
 
     def post(self):
         """ post request endpoint for user login """
@@ -76,10 +76,10 @@ class AuthenticateUser(UserRecords, Resource):
 
         if not data['email'].strip():
             return make_response(jsonify({"status":400,
-                                       "Error":"Email field is required"}), 400)
+                                       "Error":"email field is required"}), 400)
         if not data['password'].strip():
             return make_response(jsonify({"status":400,
-                                       "Error":"Password field is required"}), 400)
+                                       "Error":"eassword field is required"}), 400)
 
         user_data = self.rec.login_user(data['email'])
         if user_data:
@@ -87,7 +87,7 @@ class AuthenticateUser(UserRecords, Resource):
             access_token = create_access_token(identity= email.strip())
             if check_password_hash(password.strip(), data['password']):
 
-                return make_response(jsonify({"message":"Login for {} succesful".format(data['email']),
+                return make_response(jsonify({"message":"Login for {} is succesful".format(data['email']),
                                              "Token":access_token}), 200)
             else:
                 return make_response(jsonify({"message":"Incorrect password"}), 400)

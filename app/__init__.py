@@ -1,3 +1,4 @@
+import os
 from flask import Flask, Blueprint
 from flask_jwt_extended import JWTManager
 from .utils.dbconnect import create_tables
@@ -9,7 +10,8 @@ def create_app():
     app = Flask(__name__)
     app.register_blueprint(v1)
     app.register_blueprint(v2)
-    app.config['JWT_SECRET_KEY'] = 'ImIGHtForgetTHi!s'
+    JWT_KEY= os.getenv('SECRET_KEY')
+    app.config['JWT_SECRET_KEY'] = JWT_KEY
     jwt = JWTManager(app)
     create_tables()
 

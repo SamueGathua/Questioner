@@ -28,7 +28,7 @@ class Tables():
         questions = """CREATE TABLE IF NOT EXISTS questions
         (
         Id  SERIAL PRIMARY KEY,
-        M_id INTEGER REFERENCES meetups(Id),
+        M_id INTEGER REFERENCES meetups(Id) ON DELETE CASCADE,
         U_id INTEGER REFERENCES users(Id),
         Question VARCHAR (50) NOT NULL,
         Votes INTEGER,
@@ -38,7 +38,7 @@ class Tables():
         confirms = """CREATE TABLE IF NOT EXISTS confirms
         (
         Id  SERIAL,
-        M_id INTEGER REFERENCES meetups(Id),
+        M_id INTEGER REFERENCES meetups(Id) ON DELETE CASCADE,
         U_id INTEGER REFERENCES users(Id),
         Confirm VARCHAR (50) NOT NULL,
         PostedOn TIMESTAMP,

@@ -27,14 +27,34 @@ class Tables():
         )"""
         questions = """CREATE TABLE IF NOT EXISTS questions
         (
-        Id  SERIAL,
+        Id  SERIAL PRIMARY KEY,
         M_id INTEGER REFERENCES meetups(Id),
         U_id INTEGER REFERENCES users(Id),
         Question VARCHAR (50) NOT NULL,
         Votes INTEGER,
         PostedOn TIMESTAMP,
+        UNIQUE (Id, M_id)
+        )"""
+        confirms = """CREATE TABLE IF NOT EXISTS confirms
+        (
+        Id  SERIAL,
+        M_id INTEGER REFERENCES meetups(Id),
+        U_id INTEGER REFERENCES users(Id),
+        Confirm VARCHAR (50) NOT NULL,
+        PostedOn TIMESTAMP,
         PRIMARY KEY (Id, M_id)
         )"""
+        comments = """CREATE TABLE IF NOT EXISTS comments
+        (
+        Id  SERIAL PRIMARY KEY,
+        Q_id INTEGER REFERENCES questions(Id),
+        U_id INTEGER REFERENCES users(Id),
+        Comment VARCHAR (50) NOT NULL,
+        PostedOn TIMESTAMP,
+        UNIQUE (Id, Q_id)
+        )"""
 
-        self.query = [users,meetups,questions]
+
+
+        self.query = [users,meetups,questions,confirms,comments]
         return self.query

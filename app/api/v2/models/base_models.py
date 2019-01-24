@@ -24,3 +24,15 @@ class User():
             return isadmin
         else:
             return False
+
+    def check_item_exist(self,id):
+        query = "SELECT * FROM questions WHERE id = '{}'".format(id)
+        get_user_data = init_db()
+        cursor = get_user_data.cursor(cursor_factory=RealDictCursor)
+        cursor.execute(query)
+        question_data = cursor.fetchone()
+
+        if question_data:
+            return question_data['id']
+        else:
+            return None

@@ -57,10 +57,11 @@ class Meetup(Resource, MeetupRecords):
                                          "message":"A new record with the following data has been added",
                                          "data": res}), 201)
 
-                                         
+
 class MeetupId(Resource, MeetupRecords):
     def __init__(self):
         self.records = MeetupRecords()
+        self.check = User()
 
     def get(self, id):
         if self.records.get_specific_meetup_record(id):
@@ -71,3 +72,17 @@ class MeetupId(Resource, MeetupRecords):
             """if the requested data does not exist"""
             return make_response(jsonify({"status":200,
                                         "Error": "Meetup record not found"}), 404)
+    @jwt_required
+    def delete(self, id):
+        author = get_jwt_identity()
+        if not self.check.check_is_admin(author):
+            return make_response(jsonify({"status":401,
+                                       "message":" This service is for admin only"}), 401)
+        if self.records.get_specific_meetup_record(id):
+            self.records.delete_specific_meetups(id)
+            return make_response(jsonify({"status":200,
+                                        "message":"The record has been deleted successfully"}), 200)
+        else:
+            """if the requested data does not exist"""
+            return make_response(jsonify({"status":404,
+                                        "message": "Meetup record not found"}), 404)

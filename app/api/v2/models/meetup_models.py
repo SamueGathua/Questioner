@@ -38,9 +38,19 @@ class MeetupRecords():
        cur.execute(query)
        return cur.fetchall()
 
-
     def get_specific_meetup_record(self, id):
          query = "SELECT * FROM meetups WHERE id = '{}'".format(id)
          cur = self.db.cursor(cursor_factory=RealDictCursor)
          cur.execute(query)
-         return cur.fetchall()
+         data =cur.fetchall()
+         if data:
+             return data
+         else:
+             return None
+
+    def delete_specific_meetups(self,id):
+        query = " DELETE FROM meetups WHERE id={};".format(id)
+        cur = self.db.cursor()
+        cur.execute(query)
+        self.db.commit()
+        return True

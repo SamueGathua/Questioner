@@ -10,6 +10,7 @@ from .views.question_views import Question
 from .views.confirms_views import ConfirmAttendance
 from .views.votes_views import Votes
 
+
 api.add_resource(Signup, '/user/signup')
 api.add_resource(AuthenticateUser, '/user/login')
 api.add_resource(Meetup, '/meetups')

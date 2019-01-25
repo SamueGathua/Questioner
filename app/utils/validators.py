@@ -12,3 +12,6 @@ class Validations():
 
         valid = "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
         return re.match(valid, password)
+        
+    def validate_white_space(self,field):
+        return re.match(r'^[a-zA-Z]+$', field)

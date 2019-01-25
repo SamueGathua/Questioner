@@ -18,14 +18,14 @@ class UserRecords():
         "email": data['email'],
         "phonenumber":data['phonenumber'],
         "password":generate_password_hash( data['password'],method='pbkdf2:sha256', salt_length=8),
-        "isadmin": data['isadmin']
+
 
         }
         query = """INSERT INTO users(FirstName, LastName, OtherName,\
-        Email,Password,RegisteredOn,IsAdmin,PhoneNumber)
-        VALUES ('%s', '%s', '%s', '%s','%s','%s','%s','%s');""" % \
+        Email,Password,RegisteredOn,PhoneNumber)
+        VALUES ('%s', '%s', '%s', '%s','%s','%s','%s');""" % \
         (data['firstname'], data['lastname'], data['othername'], data['email'],\
-        data['password'], data['registered_on'],data['isadmin'],data['phonenumber'])
+        data['password'], data['registered_on'],data['phonenumber'])
 
         save = self.db
         cur = save.cursor()

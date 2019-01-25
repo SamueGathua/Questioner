@@ -4,6 +4,7 @@ from werkzeug.security import check_password_hash
 from flask_jwt_extended import create_access_token, create_refresh_token
 
 from ..models.user_models import UserRecords
+from ..models.base_models import User
 from ....utils.validators import Validations
 
 class Signup(Resource, UserRecords):
@@ -11,6 +12,7 @@ class Signup(Resource, UserRecords):
         self.records = UserRecords()
         self.parser = reqparse.RequestParser()
         self.validate = Validations()
+        self.check = User()
         """validates the key and data types  for the meetup record"""
         self.parser.add_argument('firstname', type=str, required=True, help='Invalid key for firstname')
         self.parser.add_argument('lastname', type=str, required=True, help='Invalid key for lastname')
@@ -27,31 +29,43 @@ class Signup(Resource, UserRecords):
          if not data:
              return make_response(jsonify({"status":400,
                                         "error":" All the fields are required"}), 400)
-         if not data['firstname'] or not data['firstname'].strip():
+         if not data['firstname'].strip():
              return make_response(jsonify({"status":400,
                                         "error":" The firstname field is required"}), 400)
-         if not data['lastname'] or  not data['firstname'].strip():
+         if not data['firstname'].strip():
              return make_response(jsonify({"status":400,
                                         "error":"The lastname field is required"}), 400)
          if not data['othername'] or not data['othername'].strip() :
              return make_response(jsonify({"status":400,
                                         "error":"The othername field is required"}), 400)
-         if not data['email'] or not data['email'].strip():
+         if not data['email'].strip():
              return make_response(jsonify({"status":400,
                                         "error":"The email field is required"}), 400)
-         if not data['phonenumber'] or not data['phonenumber'].strip():
+         if not data['phonenumber'].strip():
              return make_response(jsonify({"status":400,
                                         "Error":"The phoneNumber field is required"}), 400)
-         if not data['password'] or not data['password'].strip():
+         if not data['password'].strip():
              return make_response(jsonify({"status":400,
                                        "error":"The password field is required"}), 400)
          if not self.validate.validate_email(data['email']):
              return make_response(jsonify({"status":400,
                                         "error":"Invalid email format"}), 400)
+         if self.check.get_user_details(data['email']):
+              return make_response(jsonify({"status":400,
+                                         "error":"Email already exists"}), 400)
          if not self.validate.validate_password(data['password']):
              return make_response(jsonify({"status":400,
-                                        "error":"Password should have atleast 1 character,1 uppercase,and \
-                                         a number"}), 400)
+                                        "error":"Password should have atleast 1 character,1 uppercase,and a number"}), 400)
+         if not self.validate.validate_white_space(data['firstname']):
+             return make_response(jsonify({"status":400,
+                                         "error":"Should be atlist not contain spaces"}), 400)
+         if not self.validate.validate_white_space(data['lastname']):
+             return make_response(jsonify({"status":400,
+                                         "error":"Should be atlist not contain spaces"}), 400)
+         if not self.validate.validate_white_space(data['othername']):
+             return make_response(jsonify({"status":400,
+                                         "error":"Should be atlist not contain spaces"}), 400)
+
 
          else:
              access_token = create_access_token(identity=data['email'])

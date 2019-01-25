@@ -8,6 +8,7 @@ from .api.v2 import version_two as v2
 
 def create_app():
     app = Flask(__name__)
+    app.url_map.strict_slashes = False
     app.register_blueprint(v1)
     app.register_blueprint(v2)
     JWT_KEY= os.getenv('SECRET_KEY')

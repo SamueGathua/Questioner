@@ -1,0 +1,203 @@
+FORMAT: 1A
+HOST: http://127.0.0.1:5000/api/v2
+
+# VERSION @
+TODO: Add Description
+
+# Group Misc
+
+## Meetups [/meetups]
+
+### POST MEETUP [POST]
+TODO: Add Description
+
++ Request (application/json)
+
+    + Attributes (POST MEETUPRequest)
+
+
+    + Body
+
+            {
+                "title": "Python marathon",
+                "description": "Flask and FlaskVery Long",
+                "venue": "Heart",
+                "date": "20/Jan/2019",
+                "tags": "Technology"
+            }
+
+
++ Response 200
+
+
+
+### GET MEETUPS [GET]
+TODO: Add Description
+
++ Response 200
+
+
+
+
+## Questions 1 Votes [/questions/1/votes]
+
+### PATCH VOTES [PATCH]
+TODO: Add Description
+
++ Request (application/json)
+
+    + Attributes (PATCH VOTESRequest)
+
+
+    + Body
+
+            {
+                "vote": "ups"
+            }
+
+
++ Response 200
+
+
+
+
+## User Login [/user/login]
+
+### LOGIN [POST]
+TODO: Add Description
+
++ Request (application/json)
+
+    + Attributes (LOGINRequest)
+
+
+    + Body
+
+            {
+                "email": "admin@example.com",
+                "password": "123abc&&"
+            }
+
+
++ Response 200
+
+
+
+
+## Meetups 1 Questions [/meetups/1/questions]
+
+### POST QUESTIONS [POST]
+TODO: Add Description
+
++ Request (application/json)
+
+    + Attributes (POST QUESTIONSRequest)
+
+
+    + Body
+
+            {
+                "question": "Haiya ebu cheki?"
+            }
+
+
++ Response 200
+
+
+
+
+## User Signup [/user/signup]
+
+### SIGNUP [GET]
+TODO: Add Description
+
++ Request (application/json)
+
+
+
+
++ Response 200
+
+
+
+
+## Questions Comments [/questions/comments]
+
+### POST COMMENTS [POST]
+TODO: Add Description
+
++ Request (application/json)
+
+    + Attributes (POST COMMENTSRequest)
+
+
+    + Body
+
+            {
+                "comment": "Say something"
+            }
+
+
++ Response 200
+
+
+
+
+## Unnammed Endpoint [//]
+
+### DELETE MEETUP [GET]
+TODO: Add Description
+
++ Response 200
+
+
+
+### CONFIRM ATTENDANCE [GET]
+TODO: Add Description
+
++ Response 200
+
+
+
+
+
+# Data Structures
+
+## POST MEETUPRequest (object)
+
+
+### Properties
++ `title` (string, required)
++ `description` (string, required)
++ `venue` (string, required)
++ `date` (string, required)
++ `tags` (string, required)
+
+
+## PATCH VOTESRequest (object)
+
+
+### Properties
++ `vote` (string, required)
+
+
+## LOGINRequest (object)
+
+
+### Properties
++ `email` (string, required)
++ `password` (string, required)
+
+
+## POST QUESTIONSRequest (object)
+
+
+### Properties
++ `question` (string, required)
+
+
+## POST COMMENTSRequest (object)
+
+
+### Properties
++ `comment` (string, required)

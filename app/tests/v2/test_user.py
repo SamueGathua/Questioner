@@ -36,6 +36,6 @@ class TestUser(unittest.TestCase):
                             headers={"content-type": "application/json"})
         return response
 
-    def test_post(self):
+    def test_post_with_invalid_password(self):
          r = self.create_user_record()
          self.assertEqual(r.status_code, 400)

@@ -9,15 +9,27 @@ class TestQuestions(unittest.TestCase):
          app.testing = True
          self.app = create_app()
          self.client = self.app.test_client()
-    def create_record(self):
-        new_rec = {
-        "question": "Who discovered python?"
-        }
-        response = self.client.post('/api/v2/meetups/1/questions',
-                            data=json.dumps(new_rec),
-                            headers={"content-type": "application/json"})
-        return response
+         response = self.client.post('/api/v2/user/login', \
+            data=json.dumps({
+                "email":"admin@example.com",
+	            "password":"123abc&&"
+                }),\
+            headers={"content-type": "application/json"})
 
-    def test_question_post_anauthorized(self):
+         self.get_token = response.get_json()['token']
+         self.header = {"Authorization":"Bearer "+self.get_token}
+
+
+    def create_record(self):
+         new_rec = {
+         "question": "Who discovered python?"
+         }
+         response = self.client.post('/api/v2/meetups/1/questions',
+                            data=json.dumps(new_rec),
+                            content_type="application/json",
+                            headers = self.header)
+         return response
+
+    def test_question_post_(self):
         r = self.create_record()
-        self.assertEqual(r.status_code, 401)
+        self.assertEqual(r.status_code, 201)
